@@ -1,13 +1,14 @@
+import { Laureate } from "../../hooks/apiFetching";
 
 
-const NobelPrize = () => {
+const NobelPrize = (detail: String, laureates : Laureate) => {
     return (
         <section className="nobel">
             <div className="laureates">
-                <img src="https://www.analyticsinsight.net/wp-content/uploads/2023/03/Screenshot-2023-03-22-151142.png"/>
+                <h2> {laureates.name.en} </h2>
             </div>
             <div className="nobelDetails">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor harum laborum, autem provident sit</p>
+                <p>{detail}</p>
             </div>
         </section>
     )

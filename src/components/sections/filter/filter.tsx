@@ -1,10 +1,17 @@
+import { useState } from "react";
+import fetchAllNobelData from "../../hooks/apiFetching"
 
-const Filter = () => {
+export const Filter = ({year=1989}) => {
+    
+    
     return (
+        
         <section className="filterSection">
             <div className="years">
-                years
+            
+                { year }
             </div>
+            
         </section>
     )
 }
