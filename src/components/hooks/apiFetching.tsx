@@ -1,74 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import NobelPrize from '../sections/details/details';
-import { JsxElement } from 'typescript';
-import { Filter } from '../sections/filter/filter';
+import React, { useEffect, useState } from "react";
+import { NobelPrize } from "../interface/interface";
+import { Filter } from "../sections/filter/filter";
 
-export interface INobel {
-    nobelPrizes: NobelPrize[];
-    meta:        Meta;
-    links:       INobelLink[];
-}
+const CreateFilter = () => {
+  const [years, setYears] = useState<number[]>([]);
+  let arrayOfFilter = [];
 
-export interface INobelLink {
-    first: string;
-    prev:  string;
-    self:  string;
-    next:  string;
-    last:  string;
-}
+  const addYears = (awardYears: number) => {
+    setYears((current) => [...current, awardYears]);
+  };
+  useEffect(()=> {
+    fetchAllNobelData();
+  },[])
 
-export interface Meta {
-    offset:             number;
-    limit:              number;
-    nobelPrizeYear:     number;
-    yearTo:             number;
-    nobelPrizeCategory: string;
-    count:              number;
-}
-
-export interface NobelPrize {
-    awardYear:           number;
-    category:            Category;
-    categoryFullName:    Category;
-    dateAwarded:         Date;
-    prizeAmount:         number;
-    prizeAmountAdjusted: number;
-    topMotivation:       Category;
-    laureates:           Laureate[];
-}
-
-export interface Category {
-    en: string;
-    se: string;
-    no: string;
-}
-
-export interface Laureate {
-    id:         number;
-    name:       Category;
-    portion:    string;
-    sortOrder:  string;
-    motivation: Category;
-    links:      LaureateLink[];
-}
-
-export interface LaureateLink {
-    rel:    string;
-    href:   string;
-    action: string;
-    types:  string;
-}
-
-const fetchAllNobelData = () => {
-    fetch("http://api.nobelprize.org/2.1/nobelPrizes").then(response => {
-        return response.json()
-    })
-    .then(data => {
-        data.nobelPrizes.forEach((years : NobelPrize)=> {
-            console.log('forEach called!')
-            return(<Filter year= {years.awardYear}/>)
+  const fetchAllNobelData = () => {
+    fetch("http://api.nobelprize.org/2.1/nobelPrizes")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        data.nobelPrizes.forEach((nobel: NobelPrize) => {
+          //TODO: Implement state Management to save and render a button html elements with {year}
+          console.log("forEach called!");
+          addYears(nobel.awardYear);
         })
-    })
-}
+        console.log(`Hello +  ${years}`);
+        arrayOfFilter = years.filter((item,index) => years.indexOf(item)==index),
+            console.log(`array of filter = ${arrayOfFilter}`)
+      });
+  };
+  
+  return <div>testest</div>
 
-export default fetchAllNobelData;
+};
+
+export default CreateFilter;

@@ -1,4 +1,5 @@
-import { Laureate } from "../../hooks/apiFetching";
+import { Laureate } from "../../interface/interface";
+
 
 
 const NobelPrize = (detail: String, laureates : Laureate) => {
