@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { NobelPrize } from "../interface/interface";
 import { Filter } from "../sections/filter/filter";
+import { arrayOfYears } from "../constant/constant";
 
-const CreateFilter = () => {
+export const CreateFilter1 = () => {
   const [years, setYears] = useState<number[]>([]);
   let arrayOfFilter:number[] = [];
 
@@ -15,7 +16,7 @@ const CreateFilter = () => {
   },[])
 
   const fetchAllNobelData = () => {
-    fetch("http://api.nobelprize.org/2.1/nobelPrizes")
+    fetch("http://api.nobelprize.org/2.1/nobelPrizes?sort=desc")
       .then((response) => {
         return response.json();
       })
@@ -38,4 +39,14 @@ const CreateFilter = () => {
 return result
 };
 
-export default CreateFilter;
+export const ListCreator = () => {
+    let listOfFilter = arrayOfYears.map((value,index) => {
+        return(
+        <div>
+            <Filter year={value}/>
+        </div>
+        )
+    });
+    return listOfFilter;
+}
+
