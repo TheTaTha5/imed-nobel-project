@@ -10,6 +10,7 @@ function App() {
     <main>
         <Header/>
         <button onClick={()=> fetchAllNobelData()}>Filter</button>
+        
         <CreateFilter/>
         {/* <NobelPrize/> */}
     </main>

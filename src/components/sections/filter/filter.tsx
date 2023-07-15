@@ -8,7 +8,6 @@ export const Filter = ({year=1989}) => {
         
         <section className="filterSection">
             <button className="years">
-            
                 { year }
             </button>
             

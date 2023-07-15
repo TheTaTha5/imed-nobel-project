@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { NobelPrize } from "../interface/interface";
 import { Filter } from "../sections/filter/filter";
 
 const CreateFilter = () => {
   const [years, setYears] = useState<number[]>([]);
-  let arrayOfFilter = [];
+  let arrayOfFilter:number[] = [];
 
   const addYears = (awardYears: number) => {
     setYears((current) => [...current, awardYears]);
   };
+
   useEffect(()=> {
     fetchAllNobelData();
   },[])
@@ -25,13 +26,16 @@ const CreateFilter = () => {
           addYears(nobel.awardYear);
         })
         console.log(`Hello +  ${years}`);
-        arrayOfFilter = years.filter((item,index) => years.indexOf(item)==index),
-            console.log(`array of filter = ${arrayOfFilter}`)
-      });
+        
+        console.log(`array of filter = ${arrayOfFilter}`);
+      });     
   };
-  
-  return <div>testest</div>
 
+   arrayOfFilter = years.filter((item,index) => years.indexOf(item)==index)
+   let result = arrayOfFilter.map((value,index)=> {
+    return(<Filter year={value}></Filter>)
+   })
+return result
 };
 
 export default CreateFilter;
