@@ -10,7 +10,7 @@ export const NobelPrizePage = () => {
     if(data[0].awardYear) {
         return (
             <section className="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 place-items-center">
-                <h1 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white content-center">{data[0].category?.en}</h1>
+                <h1 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white content-center"> Category : {data[0].category?.en}</h1>
                 <div className="tracking-tight text-gray-900 dark:text-white content-center">
                     <h2> Laureates : {data[0].laureates?.map((laureates) => {
                         return <LaureateBannerElement motivation={laureates.motivation.en} name={laureates.fullName.en}/>

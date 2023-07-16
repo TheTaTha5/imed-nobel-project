@@ -16,10 +16,12 @@ export const CateSelectorButton = () => {
   const fetchAll = useUseStore((state)=> state.totaledAward);
 
   return (
-    <div>
+    <div className="">
+      <div className="flex">
         {arrayOfCategory.map((category)=> {
             return <button className="rounded-none bg-emerald-300 w-28 hover:bg-emerald-700 text-white border-2 border-black " value={category} onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}>{category}</button>
         })}
+        </div>
         <div>total prize amount : {totalPrize}</div>
     </div>
   );

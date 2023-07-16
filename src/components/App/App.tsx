@@ -16,7 +16,7 @@ function App() {
           <ListCreator />
         </div>
 
-        <div className=" justify-center basis-3/4">
+        <div className=" justify-center basis-3/4 pb-2">
           <div><NobelPrizePage /></div>
           <div className="grid grid-flow-row grid-rows-1">
             <CateSelectorButton />
