@@ -14,7 +14,8 @@ export const Header = () => {
      else {
         return(
         
-            <div className="flex justify-center text-xl">
+            <div className="grid grid-rows-2 justify-center text-xl">
+            <h1>Nobel Prize</h1>
             <h1>ประจำปีค.ศ. {yeardata} </h1>
             </div>
 
