@@ -2,17 +2,23 @@ import { Laureate } from "../../interface/interface";
 
 
 
-const NobelPrize = (detail: String, laureates : Laureate) => {
+export const NobelPrizeDetail = (laureate:string,detail:string,awardYear:number,inspriration:string ) => {
     return (
         <section className="nobel">
             <div className="laureates">
-                <h2> {laureates.name.en} </h2>
+                <h2> {laureate} </h2>
+            </div>
+            <div>
+                <h3>
+                    {awardYear}
+                </h3>
             </div>
             <div className="nobelDetails">
                 <p>{detail}</p>
             </div>
+            <div>
+                {inspriration}
+            </div>
         </section>
     )
 }
-
-export default NobelPrize;

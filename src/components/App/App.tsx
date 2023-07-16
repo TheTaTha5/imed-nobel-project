@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
-import { Header } from '../sections/header/header';
-import NobelPrize from '../sections/details/details';
-import { Filter } from '../sections/filter/filter';
-import { ListCreator, CreateFilter1 } from '../hooks/apiFetching';
+import React, { useState } from "react";
+import { Header } from "../sections/header/header";
+import { Filter } from "../sections/filter/filter";
+import ListCreator from "../hooks/listCreator";
+import { NobelPrizeDetail } from "../sections/details/details";
+import DetailPageGenerator from "../hooks/nobelpagebuilder";
 
-function App() {
 
+ function App() {
   return (
     <main>
-        <Header/>
-        <ListCreator/>
-        {/* <CreateFilter1/> */}
-        {/* <NobelPrize/> */}
+      <Header />
+      <ListCreator />
+      
+     {/* TODO: render nobelprizee */} 
+     <div>
+     </div>
     </main>
   );
 }

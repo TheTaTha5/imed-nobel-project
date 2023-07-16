@@ -22,14 +22,14 @@ export interface Meta {
 }
 
 export interface NobelPrize {
-    awardYear:           number;
-    category:            Category;
-    categoryFullName:    Category;
-    dateAwarded:         Date;
-    prizeAmount:         number;
-    prizeAmountAdjusted: number;
-    topMotivation:       Category;
-    laureates:           Laureate[];
+    awardYear?:           number;
+    category?:            Category;
+    categoryFullName?:    Category;
+    dateAwarded?:         Date;
+    prizeAmount?:         number;
+    prizeAmountAdjusted?: number;
+    topMotivation?:       Category;
+    laureates?:           Laureate[];
 }
 
 export interface Category {
@@ -52,4 +52,23 @@ export interface LaureateLink {
     href:   string;
     action: string;
     types:  string;
+}
+
+
+export interface PrizeCat {
+    che: object[],
+    eco: object[],
+    lit: object[],
+    pea: object[],
+    phy: object[],
+    med: object[],
+}
+
+export interface DisplayNobelPrize {
+    awardYear?:           number;
+    dateAwarded?:         Date;
+    prizeAmount?:         number;
+    prizeAmountAdjusted?: number;
+    topMotivation?:       string;
+    laureates?:           Laureate[];
 }
