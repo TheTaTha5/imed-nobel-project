@@ -40,7 +40,7 @@ export interface Category {
 
 export interface Laureate {
     id:         number;
-    fullName:       Category;
+    fullName:   Category;
     portion:    string;
     sortOrder:  string;
     motivation: Category;

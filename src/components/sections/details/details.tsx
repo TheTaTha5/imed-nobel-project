@@ -21,7 +21,7 @@ export const NobelPrizePage = () => {
                 </h3>
             </div>
             
-            <div>PrizeAmount : {data[0].prizeAmount}</div>
+            <div>PrizeAmount : {data[0].prizeAmount?.toLocaleString()} SEK</div>
         </section>
     )
 }

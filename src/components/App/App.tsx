@@ -10,12 +10,10 @@ import { NobelPage } from "../hooks/nobelpagebuilder";
  function App() {
   return (
     <main>
-      <Header/>
+      <div><Header/></div>
       <ListCreator />
-     <NobelPage/>
-     <NobelPrizePage/>
-     <div>
-     </div>
+      <NobelPage/>
+      <NobelPrizePage/>
     </main>
   );
 }
