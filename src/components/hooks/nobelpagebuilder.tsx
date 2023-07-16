@@ -1,7 +1,6 @@
 import {
   DisplayNobelPrize,
   NobelPrize,
-  PrizeCat,
 } from "../interface/interface";
 import { NobelPrizePage } from "../sections/details/details";
 import { useUseStore } from "../store/store";
@@ -17,37 +16,38 @@ export const NobelPage = () => {
     <div>
       <button
         value="che"
-        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+        onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}
       >
         che
       </button>
       <button
         value="eco"
-        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+        onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}
       >
         eco
       </button>
       <button
         value="lit"
-        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+        onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}
       >
         lit
       </button>
       <button
         value="pea"
-        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+        onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}
       >
         pea
       </button>
       <button
         value="phy"
-        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+        onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}
       >
         phy
       </button>
       <button
         value="med"
-        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+        onClick={(e) => {setCate((e.target as HTMLButtonElement).value),
+            fetch(year,cate)}}
       >
         med
       </button>

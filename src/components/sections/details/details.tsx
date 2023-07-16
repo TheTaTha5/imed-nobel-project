@@ -1,23 +1,28 @@
 import { Laureate } from "../../interface/interface";
+import { useUseStore } from "../../store/store";
 
 
 
-export const NobelPrizePage = (detail:string,awardYear:number,inspriration:string,laureate?:string ) => {
+export const NobelPrizePage = () => {
+    const data = useUseStore((state)=> state.data)
     return (
         <section className="nobel">
+            <h1>{data[0].category?.en}</h1>
             <div className="laureates">
-                <h2> {laureate} </h2>
+                <h2> Laureates : {data[0].laureates?.map((laureates) => {
+                    return <p>{laureates.fullName.en}</p>
+                })}</h2>
             </div>
             <div>
                 <h3>
-                    {awardYear}
+                    {data[0].awardYear}
                 </h3>
             </div>
             <div className="nobelDetails">
-                <p>{detail}</p>
+                <p>{data[0].category?.en}</p>
             </div>
             <div>
-                {inspriration}
+                {data[0].topMotivation?.en}
             </div>
         </section>
     )

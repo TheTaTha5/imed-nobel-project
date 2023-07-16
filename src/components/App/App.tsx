@@ -13,6 +13,7 @@ import { NobelPage } from "../hooks/nobelpagebuilder";
       <Header/>
       <ListCreator />
      <NobelPage/>
+     <NobelPrizePage/>
      <div>
      </div>
     </main>

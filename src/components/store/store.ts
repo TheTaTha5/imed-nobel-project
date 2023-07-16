@@ -39,7 +39,7 @@ export const useUseStore = create<FilterData>((set,get) => ({
             let body = await res.json();
             if(res.status == 200) {
                 set({data:body})
-                console.log(get().data[0].awardYear);
+                console.log(get().data[0]);
             } else {
                 console.log("fetchfail")
             }
@@ -47,4 +47,5 @@ export const useUseStore = create<FilterData>((set,get) => ({
             console.log(error)
         }
     }
+    
 }));
