@@ -1,5 +1,7 @@
 import { Laureate } from "../../interface/interface";
 import { useUseStore } from "../../store/store";
+import LaureateBannerElement from "./laureatesBanner/laureatesBanner";
+
 
 
 
@@ -10,7 +12,7 @@ export const NobelPrizePage = () => {
             <h1>{data[0].category?.en}</h1>
             <div className="laureates">
                 <h2> Laureates : {data[0].laureates?.map((laureates) => {
-                    return <p>{laureates.fullName.en}</p>
+                    return <LaureateBannerElement motivation={laureates.motivation.en} name={laureates.fullName.en}/>
                 })}</h2>
             </div>
             <div>
@@ -18,12 +20,8 @@ export const NobelPrizePage = () => {
                     {data[0].awardYear}
                 </h3>
             </div>
-            <div className="nobelDetails">
-                <p>{data[0].category?.en}</p>
-            </div>
-            <div>
-                {data[0].topMotivation?.en}
-            </div>
+            
+            <div>PrizeAmount : {data[0].prizeAmount}</div>
         </section>
     )
 }

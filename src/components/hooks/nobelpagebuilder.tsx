@@ -1,3 +1,4 @@
+import { arrayOfCategory } from "../constant/constant";
 import {
   DisplayNobelPrize,
   NobelPrize,
@@ -11,51 +12,18 @@ export const NobelPage = () => {
   const year = useUseStore((state) => state.year);
   const fetch = useUseStore((state) => state.getData);
   const data = useUseStore((state) => state.data);
+  const fetchAll = useUseStore((state)=> state.totaledAward);
 
   return (
     <div>
-      <button
-        value="che"
-        onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}
-      >
-        che
-      </button>
-      <button
-        value="eco"
-        onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}
-      >
-        eco
-      </button>
-      <button
-        value="lit"
-        onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}
-      >
-        lit
-      </button>
-      <button
-        value="pea"
-        onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}
-      >
-        pea
-      </button>
-      <button
-        value="phy"
-        onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}
-      >
-        phy
-      </button>
-      <button
-        value="med"
-        onClick={(e) => {setCate((e.target as HTMLButtonElement).value),
-            fetch(year,cate)}}
-      >
-        med
-      </button>
+        {arrayOfCategory.map((category)=> {
+            return <button value={category} onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}>{category}</button>
+        })}
       <h1>
         {cate}
         {year}
       </h1>
-      <button onClick={()=> fetch(year,cate)}>Go fetCh!!!</button>
+      <button onClick={()=> fetchAll()}>Go fetCh!!!</button>
     </div>
   );
 }; //Make react component for category selector

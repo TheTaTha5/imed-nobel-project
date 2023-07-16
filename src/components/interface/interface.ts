@@ -72,3 +72,8 @@ export interface DisplayNobelPrize {
     topMotivation?:       string;
     laureates?:           Laureate[];
 }
+
+export interface LaureateBanner {
+    name : string;
+    motivation : string;
+}
