@@ -1,19 +1,61 @@
-import { DisplayNobelPrize, NobelPrize, PrizeCat } from "../interface/interface";
+import {
+  DisplayNobelPrize,
+  NobelPrize,
+  PrizeCat,
+} from "../interface/interface";
 import { NobelPrizePage } from "../sections/details/details";
-import { CreateDetailPage } from "./apiFetching";
+import { useUseStore } from "../store/store";
 
-//che cate only
+export const NobelPage = () => {
+  const setCate = useUseStore((state) => state.setCate);
+  const cate = useUseStore((state) => state.cate);
+  const year = useUseStore((state) => state.year);
+  const fetch = useUseStore((state) => state.getData);
+  const data = useUseStore((state) => state.data);
 
-// const DetailPageGenerator = (year:number) => {
-//    let prizeDetail:DisplayNobelPrize = {
-//         awardYear : CreateDetailPage(year)[0].awardYear,
-//         laureates: CreateDetailPage(year)[0].laureates,
-//         dateAwarded: CreateDetailPage(year)[0].dateAwarded,
-//         prizeAmount: CreateDetailPage(year)[0].prizeAmount,
-//         prizeAmountAdjusted: CreateDetailPage(year)[0].prizeAmountAdjusted,
-//         topMotivation: CreateDetailPage(year)[0].topMotivation?.en
-//    };
-   
-// }
-
-// export default DetailPageGenerator;
+  return (
+    <div>
+      <button
+        value="che"
+        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+      >
+        che
+      </button>
+      <button
+        value="eco"
+        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+      >
+        eco
+      </button>
+      <button
+        value="lit"
+        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+      >
+        lit
+      </button>
+      <button
+        value="pea"
+        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+      >
+        pea
+      </button>
+      <button
+        value="phy"
+        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+      >
+        phy
+      </button>
+      <button
+        value="med"
+        onClick={(e) => setCate((e.target as HTMLButtonElement).value)}
+      >
+        med
+      </button>
+      <h1>
+        {cate}
+        {year}
+      </h1>
+      <button onClick={()=> fetch(year,cate)}>Go fetCh!!!</button>
+    </div>
+  );
+}; //Make react component for category selector

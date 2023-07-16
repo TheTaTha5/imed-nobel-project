@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { Laureate } from "../interface/interface";
-import { CreateDetailPage } from "../hooks/apiFetching";
+import { Laureate, NobelPrize } from "../interface/interface";
+import { FetchNobel } from "../hooks/apiFetcher";
 
 interface DataState {
     awardYear?:           number;
@@ -11,16 +11,22 @@ interface DataState {
     laureates?:           string;
 }
 
+
+
 interface FilterData {
     data: object,
-    year: null|number,
+    year: number,
     cate: string,
     setYear: (year:number)=> void,
-    setCate: (cate:string)=> void
+    setCate: (cate:string)=> void,
+    setData: (data:object) => void,
+    getData: (year:number,cate:string) => any,
 }
-export const useUseStore = create<FilterData>((set) => ({
+
+
+export const useUseStore = create<FilterData>((set,get) => ({
     data: {},
-    year: null,
+    year: 1901,
     cate: "che",
     setYear: (newYear:number) => {
         set({year : newYear})
@@ -28,12 +34,15 @@ export const useUseStore = create<FilterData>((set) => ({
     setCate: (newCate:string) => {
         set({cate:newCate})
     },
-    // getAwardData: async (year:number,cate:{cate?: string | undefined;}) => {
-    //     try {
-    //         const result = CreateDetailPage(year,cate);
-    //         set({data: result})
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
-}))
+    setData: (newData:NobelPrize) => {
+        set({data:newData})
+    },
+    getData: async () => {
+        try {
+            let result = await FetchNobel(get().cate,get().year);
+           return result;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}));

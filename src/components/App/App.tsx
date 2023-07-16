@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Header } from "../sections/header/header";
-import { Filter } from "../sections/filter/filter";
 import ListCreator from "../hooks/listCreator";
 import { NobelPrizePage } from "../sections/details/details";
 import { useUseStore } from "../store/store";
+import { NobelPage } from "../hooks/nobelpagebuilder";
 
 
 
@@ -12,7 +12,7 @@ import { useUseStore } from "../store/store";
     <main>
       <Header/>
       <ListCreator />
-     {/* TODO: render nobelprizee */} 
+     <NobelPage/>
      <div>
      </div>
     </main>
