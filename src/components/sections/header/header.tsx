@@ -1,11 +1,13 @@
+import { useUseStore } from "../../store/store";
 
 
 export const Header = ( {year = null} ) => {
-    if(year) {
+    const yeardata = useUseStore((state)=> state.year);
+    if(yeardata) {
     return(
         
             <div className="Header">
-            <h1>ประจำปีค.ศ. {year} </h1>
+            <h1>ประจำปีค.ศ. {yeardata} </h1>
             </div>
 
     )

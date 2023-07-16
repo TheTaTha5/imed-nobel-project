@@ -1,32 +1,38 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Filter } from "../sections/filter/filter";
-import { NobelPrizeDetail } from "../sections/details/details";
-import {NobelPrize} from "../interface/interface"
+import { NobelPrizePage } from "../sections/details/details";
+import {DisplayNobelPrize, NobelPrize} from "../interface/interface"
 
-export const CreateDetailPage = (year:number) : NobelPrize[] =>  {
-  let allNobel:object[] = [];
+export const CreateDetailPage = (year:number,{cate="che"}) =>  {
+            fetch(`http://api.nobelprize.org/2.1/nobelPrize/${cate}/${year}`).then((res) => res.json())
+            .then((result)=> {
+            console.log(result) 
+            });
+          }
 
-  const fetchSelectedYear = () => {
-  Promise.all([
-          fetch(`http://api.nobelprize.org/2.1/nobelPrize/che/${year}`).then((res) => res.json()),
-          fetch(`http://api.nobelprize.org/2.1/nobelPrize/eco/${year}`).then((res) => res.json()),
-          fetch(`http://api.nobelprize.org/2.1/nobelPrize/lit/${year}`).then((res) => res.json()),
-          fetch(`http://api.nobelprize.org/2.1/nobelPrize/pea/${year}`).then((res) => res.json()),
-          fetch(`http://api.nobelprize.org/2.1/nobelPrize/phy/${year}`).then((res) => res.json()),
-          fetch(`http://api.nobelprize.org/2.1/nobelPrize/med/${year}`).then((res) => res.json()),
-        ]).then((result)=> {
-          result.flat().map((nobel)=> {
-            allNobel.push(nobel)
+//   const fetchSelectedYear = () => {
+//   Promise.all([
+//           fetch(`http://api.nobelprize.org/2.1/nobelPrize/che/${year}`).then((res) => res.json()),
+//           fetch(`http://api.nobelprize.org/2.1/nobelPrize/eco/${year}`).then((res) => res.json()),
+//           fetch(`http://api.nobelprize.org/2.1/nobelPrize/lit/${year}`).then((res) => res.json()),
+//           fetch(`http://api.nobelprize.org/2.1/nobelPrize/pea/${year}`).then((res) => res.json()),
+//           fetch(`http://api.nobelprize.org/2.1/nobelPrize/phy/${year}`).then((res) => res.json()),
+//           fetch(`http://api.nobelprize.org/2.1/nobelPrize/med/${year}`).then((res) => res.json()),
+//         ]).then((result)=> {
+//           result.flat().map((nobel)=> {
+//             allNobel.push(nobel)
             
-          });
+//           });
           
-        });
-        return allNobel;
-}
-let result = fetchSelectedYear();
-console.log(result);
-return result;
-}
+//         });
+//         return allNobel;
+// }
+// let result = fetchSelectedYear();
+// console.log(result);
+
+
+// return result;
+// }
 
 
 

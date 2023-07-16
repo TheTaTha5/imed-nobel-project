@@ -2,7 +2,7 @@ import { Laureate } from "../../interface/interface";
 
 
 
-export const NobelPrizeDetail = (laureate:string,detail:string,awardYear:number,inspriration:string ) => {
+export const NobelPrizePage = (detail:string,awardYear:number,inspriration:string,laureate?:string ) => {
     return (
         <section className="nobel">
             <div className="laureates">

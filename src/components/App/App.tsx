@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { Header } from "../sections/header/header";
 import { Filter } from "../sections/filter/filter";
 import ListCreator from "../hooks/listCreator";
-import { NobelPrizeDetail } from "../sections/details/details";
-import DetailPageGenerator from "../hooks/nobelpagebuilder";
+import { NobelPrizePage } from "../sections/details/details";
+import { useUseStore } from "../store/store";
+
 
 
  function App() {
   return (
     <main>
-      <Header />
+      <Header/>
       <ListCreator />
-      
      {/* TODO: render nobelprizee */} 
      <div>
      </div>
