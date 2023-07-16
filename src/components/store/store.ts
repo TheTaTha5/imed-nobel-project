@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { Laureate, NobelPrize } from "../interface/interface";
-import { FetchNobel } from "../hooks/apiFetcher";
+
 
 interface DataState {
     awardYear?:           number;
@@ -14,18 +14,17 @@ interface DataState {
 
 
 interface FilterData {
-    data: object,
+    data: [NobelPrize],
     year: number,
     cate: string,
     setYear: (year:number)=> void,
     setCate: (cate:string)=> void,
-    setData: (data:object) => void,
     getData: (year:number,cate:string) => any,
 }
 
 
 export const useUseStore = create<FilterData>((set,get) => ({
-    data: {},
+    data: [{}],
     year: 1901,
     cate: "che",
     setYear: (newYear:number) => {
@@ -34,13 +33,16 @@ export const useUseStore = create<FilterData>((set,get) => ({
     setCate: (newCate:string) => {
         set({cate:newCate})
     },
-    setData: (newData:NobelPrize) => {
-        set({data:newData})
-    },
-    getData: async () => {
+    getData:async () => {
         try {
-            let result = await FetchNobel(get().cate,get().year);
-           return result;
+            let res = await fetch(`http://api.nobelprize.org/2.1/nobelPrize/${get().cate}/${get().year}`);
+            let body = await res.json();
+            if(res.status == 200) {
+                set({data:body})
+                console.log(get().data[0].awardYear);
+            } else {
+                console.log("fetchfail")
+            }
         } catch (error) {
             console.log(error)
         }

@@ -6,8 +6,6 @@ import { useUseStore } from "../../store/store";
 
 export const Filter = ({year=1989}) => {
     const setYear = useUseStore((state)=> state.setYear);
-    
-
     return (
         
         <section className="filterSection">
