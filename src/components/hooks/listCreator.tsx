@@ -4,7 +4,7 @@ import { Filter } from "../sections/filter/filter";
  const ListCreator = () => { //TODO: Seperate to new creator folder//file
     let listOfFilter = arrayOfYears.map((value,index) => {
         return(
-        <div>
+        <div className="">
             <Filter year={value}/>
         </div>
         )

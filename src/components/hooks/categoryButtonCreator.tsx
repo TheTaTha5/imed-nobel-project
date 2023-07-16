@@ -6,24 +6,21 @@ import {
 import { NobelPrizePage } from "../sections/details/details";
 import { useUseStore } from "../store/store";
 
-export const NobelPage = () => {
+export const CateSelectorButton = () => {
   const setCate = useUseStore((state) => state.setCate);
   const cate = useUseStore((state) => state.cate);
   const year = useUseStore((state) => state.year);
   const fetch = useUseStore((state) => state.getData);
   const data = useUseStore((state) => state.data);
+  const totalPrize = useUseStore((state)=> state.totalPrizeAmout);
   const fetchAll = useUseStore((state)=> state.totaledAward);
 
   return (
     <div>
         {arrayOfCategory.map((category)=> {
-            return <button value={category} onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}>{category}</button>
+            return <button className="rounded-none bg-emerald-300 w-28 hover:bg-emerald-700 text-white border-2 border-black " value={category} onClick={(e) => {(setCate((e.target as HTMLButtonElement).value)),fetch(year,cate)}}>{category}</button>
         })}
-      <h1>
-        {cate}
-        {year}
-      </h1>
-      <button onClick={()=> fetchAll()}>Go fetCh!!!</button>
+        <div>total prize amount : {totalPrize}</div>
     </div>
   );
 }; //Make react component for category selector

@@ -5,7 +5,7 @@ export const Header = () => {
     const yeardata = useUseStore((state)=> state.year);
     if(yeardata == 0) {
         return(
-            <div className="Header">
+            <div className="flex justify-center text-xl">
             <h1>Nobel Prize</h1>
             </div>
 
@@ -14,7 +14,7 @@ export const Header = () => {
      else {
         return(
         
-            <div className="Header">
+            <div className="flex justify-center text-xl">
             <h1>ประจำปีค.ศ. {yeardata} </h1>
             </div>
 

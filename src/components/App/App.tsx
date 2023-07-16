@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../sections/header/header";
 import ListCreator from "../hooks/listCreator";
 import { NobelPrizePage } from "../sections/details/details";
 import { useUseStore } from "../store/store";
-import { NobelPage } from "../hooks/nobelpagebuilder";
+import { CateSelectorButton } from "../hooks/categoryButtonCreator";
 
-
-
- function App() {
+function App() {
+  const fetchAll = useUseStore((state)=> state.totaledAward)
+  useEffect(()=> {fetchAll()},[])
   return (
     <main>
-      <div><Header/></div>
-      <ListCreator />
-      <NobelPage/>
-      <NobelPrizePage/>
+      <Header />
+      <div className="flex grid-cols-2">
+        <div className="overflow-auto basis-1/4 h-screen">
+          <ListCreator />
+        </div>
+
+        <div className=" justify-center basis-3/4">
+          <div><NobelPrizePage /></div>
+          <div className="grid grid-flow-row grid-rows-1">
+            <CateSelectorButton />
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
