@@ -20,10 +20,12 @@ interface FilterData {
     totalAward: number[],
     reducedAward:number,
     totalPrizeAmout:number,
+    activeIndex:number,
     setYear: (year:number)=> void,
     setCate: (cate:string)=> void,
     getData: (year:number,cate:string) => void,
     totaledAward: () => void,
+    setActiveButtonIndex: (i:number)=> void,
 }
 
 
@@ -34,6 +36,7 @@ export const useUseStore = create<FilterData>((set,get) => ({
     totalAward: [],
     reducedAward: 0,
     totalPrizeAmout:0,
+    activeIndex:-1,
     setYear: (newYear:number) => {
         set({year : newYear})
     },
@@ -71,6 +74,9 @@ export const useUseStore = create<FilterData>((set,get) => ({
         } catch (error) {
             console.log(error)
         }
+    },
+    setActiveButtonIndex: (i:number) => {
+        set({activeIndex: i})
     }
 
 }));

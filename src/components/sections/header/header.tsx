@@ -3,6 +3,9 @@ import { useUseStore } from "../../store/store";
 
 export const Header = () => {
     const yeardata = useUseStore((state)=> state.year);
+    const cate = useUseStore((state)=> 
+        state.cate
+    )
     if(yeardata == 0) {
         return(
             <div className="flex justify-center text-xl">
